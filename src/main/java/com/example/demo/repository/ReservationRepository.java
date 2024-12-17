@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
@@ -26,6 +25,11 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     List<Reservation> findConflictingReservations(
             @Param("id") Long id,
             @Param("startAt") LocalDateTime startAt,
-            @Param("endAt") LocalDateTime endAt
-    );
+            @Param("endAt") LocalDateTime endAt);
+
+    @Query("SELECT r FROM Reservation r " +
+            "JOIN FETCH r.item i " +
+            "JOIN FETCH r.user u")
+    List<Reservation> findAllWithUserAndItem();
+
 }
