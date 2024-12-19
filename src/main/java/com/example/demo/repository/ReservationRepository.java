@@ -10,13 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-
-    List<Reservation> findByUserIdAndItemId(Long userId, Long itemId);
-
-    List<Reservation> findByUserId(Long userId);
-
-    List<Reservation> findByItemId(Long itemId);
+public interface ReservationRepository extends JpaRepository <Reservation, Long>, ReservationRepositoryQuery {
 
     @Query("SELECT r FROM Reservation r " +
             "WHERE r.item.id = :id " +

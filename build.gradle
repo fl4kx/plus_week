@@ -42,7 +42,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     compileOnly 'org.projectlombok:lombok'
 
-    // List Util
+    // Apache Collections
     implementation 'org.apache.commons:commons-collections4:4.5.0-M2'
 
 
